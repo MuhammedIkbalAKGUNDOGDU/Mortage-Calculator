@@ -1,5 +1,9 @@
 import React from "react";
 import illustrationEmpty from "./assets/illustration-empty.svg";
+
+import Button from 'react-bootstrap/Button';
+
+
 const App = () => {
   return (
     <div className="container">
@@ -10,10 +14,9 @@ const App = () => {
             <p className="font-weight-700">Clear All</p>
           </div>
 
-          <div>
-            <label htmlFor="mortgage-amount">Mortgage Amount</label>
+          <div className="amount-container">
+            <label className="amount-label"htmlFor="mortgage-amount">Mortgage Amount</label>
             <div className="input-container">
-              <span className="currency-symbol">£</span>
               <input type="text" id="mortgage-amount" name="mortgage-amount" />
             </div>
           </div>

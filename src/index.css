@@ -115,22 +115,65 @@ h1 {
   }
 }
 
-.input-container{
-    position: relative;
-    width: 80%;
-    margin: 5%;
+.amount-container {
+  padding: 0 7%;
+  display: flex;
+  flex-direction: column;
+}
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 2%;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 2px solid var(--Slate-700);
+  border-radius: 8px;
 }
 
-.currency-symbol{
-    font-size: x-large;
-    color: var(--Slate-700);
+.input-container input {
+  width: 100%;
+  padding-left: 20px;
+  box-sizing: border-box;
 }
-#mortgage-amount{
-    margin-top: 8px;
-    border-color: var(--Slate-300);
-    min-width: 90%;
-    height: 30px;
-    border-radius: 8px;
+
+#mortgage-amount {
+  border: none;
+  outline: none; /* Input'un varsayılan odak kenarlığını kaldır */
+  min-width: 80%;
+  height: 40px;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  padding-left: 10%;
+}
+
+.amount-label {
+  color: var(--Slate-700);
+}
+
+.input-container::before {
+  content: "£";
+  position: absolute;
+  left: 0px;
+  font-size: 16px;
+  text-align: center;
+  width: 5%;
+  color: var(--Slate-700);
+  background-color: var(--Slate-100);
+  padding: 1.8%;
+  border-radius: 6px 0 0 6px;
+}
+
+.input-container:focus-within {
+  border: 2px solid var(--lime);
+  border-radius: 8px;
+}
+
+.input-container:focus-within::before {
+  background-color: var(--lime);
 }
 
 @media screen and (max-width: 375px) {
