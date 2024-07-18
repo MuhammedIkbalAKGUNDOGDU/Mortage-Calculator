@@ -14,21 +14,53 @@ const App = () => {
     setIsChecked2(false);
   };
 
+  const [mortgageAmount, setMortgageAmount] = useState("");
+  const [mortgageTerm, setMortgageTerm] = useState("");
+  const [interestRate, setInterestRate] = useState("");
+
   const [isChecked2, setIsChecked2] = useState(false);
 
   const handleChange2 = () => {
     setIsChecked(false);
     setIsChecked2(true);
   };
+  
+  const [month, setmonth] = useState(0);
+  const [year, setyear] = useState(0);
 
   const calculate = () => {
-    console.log("selam");
+    var principal = mortgageAmount;
+    var years = mortgageTerm;
+    var interestRate2 = interestRate / 100;
+   
+
+    var monthlyInterestRate = interestRate2 / 12;
+    var numberOfPayments = years * 12;
+    var monthlyPayment = 0;
+    var totalPayment = 0;
+
+    
+
+    if (isChecked) {
+      // Monthly payment for repayment mortgage
+      monthlyPayment =
+        (principal * monthlyInterestRate) /
+        (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
+      totalPayment = monthlyPayment * numberOfPayments;
+    } else if (isChecked2) {
+      // Monthly payment for interest only mortgage
+      monthlyPayment = principal * monthlyInterestRate;
+      totalPayment = monthlyPayment * numberOfPayments + principal;
+      
+    }
+
+    setmonth(monthlyPayment.toFixed(2));
+    setyear(totalPayment.toFixed(2));
+
     setIsCalculated(true);
   };
 
-  const [mortgageAmount, setMortgageAmount] = useState("");
-  const [mortgageTerm, setMortgageTerm] = useState("");
-  const [interestRate, setInterestRate] = useState("");
+  
 
   // Clear All işlevi
   const clearAll = () => {
@@ -147,9 +179,11 @@ const App = () => {
                 </div>
                 <div className="repayment-container">
                   <p className="payment-p">Your Monthly Repayments</p>
-                  <h1>£2,3456.23</h1>
-                  <p className="payment-p">Totally you'll repay over the term</p>
-                  <h2>£32421412</h2>
+                  <h1>£{month}</h1>
+                  <p className="payment-p">
+                    Totally you'll repay over the term
+                  </p>
+                  <h2>£{year}</h2>
                 </div>
               </div>
             </>
