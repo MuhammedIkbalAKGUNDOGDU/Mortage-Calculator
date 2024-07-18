@@ -145,7 +145,7 @@ const App = () => {
 
             <div className="term-rate-container-inner">
               <label className="amount-label">Interest Rate</label>
-              <div className={`input-container-term input-container-rate  ${rateempty ? "termempty" : "input-container-term-rate::before "}`}>
+              <div className={` input-container-rate  ${rateempty ? "termempty" : ""}`}>
                 <input
                   type="text"
                   id="mortgage-term"
