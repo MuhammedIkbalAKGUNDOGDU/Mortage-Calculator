@@ -5,6 +5,11 @@ import calculateimg from "./assets/icon-calculator.svg";
 import Button from "react-bootstrap/Button";
 
 const App = () => {
+  const [amountempty, setamountempty] = useState(false);
+  const [termtempty, settermtempty] = useState(false);
+  const [rateempty, setrateempty] = useState(false);
+  const [checkedempty, setcheckedempty] = useState(false);
+
   const [isCalculated, setIsCalculated] = useState(false);
 
   const [isChecked, setIsChecked] = useState(false);
@@ -24,43 +29,66 @@ const App = () => {
     setIsChecked(false);
     setIsChecked2(true);
   };
-  
+
   const [month, setmonth] = useState(0);
   const [year, setyear] = useState(0);
 
   const calculate = () => {
-    var principal = mortgageAmount;
-    var years = mortgageTerm;
-    var interestRate2 = interestRate / 100;
-   
+    if (
+      mortgageTerm != "" &&
+      mortgageAmount != "" &&
+      interestRate != "" &&
+      (isChecked != false || isChecked2 != false)
+    ) {
+      var principal = mortgageAmount;
+      var years = mortgageTerm;
+      var interestRate2 = interestRate / 100;
 
-    var monthlyInterestRate = interestRate2 / 12;
-    var numberOfPayments = years * 12;
-    var monthlyPayment = 0;
-    var totalPayment = 0;
+      var monthlyInterestRate = interestRate2 / 12;
+      var numberOfPayments = years * 12;
+      var monthlyPayment = 0;
+      var totalPayment = 0;
 
-    
+      if (isChecked) {
+        // Monthly payment for repayment mortgage
+        monthlyPayment =
+          (principal * monthlyInterestRate) /
+          (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
+        totalPayment = monthlyPayment * numberOfPayments;
+      } else if (isChecked2) {
+        // Monthly payment for interest only mortgage
+        monthlyPayment = principal * monthlyInterestRate;
+        totalPayment = monthlyPayment * numberOfPayments + principal;
+      }
 
-    if (isChecked) {
-      // Monthly payment for repayment mortgage
-      monthlyPayment =
-        (principal * monthlyInterestRate) /
-        (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
-      totalPayment = monthlyPayment * numberOfPayments;
-    } else if (isChecked2) {
-      // Monthly payment for interest only mortgage
-      monthlyPayment = principal * monthlyInterestRate;
-      totalPayment = monthlyPayment * numberOfPayments + principal;
-      
+      setmonth(monthlyPayment.toFixed(2));
+      setyear(totalPayment.toFixed(2));
+      setIsCalculated(true);
+
+      setamountempty(false);
+      settermtempty(false);
+      setrateempty(false);
+      setcheckedempty(false);
+    } else {
+      setamountempty(false);
+      settermtempty(false);
+      setrateempty(false);
+      setcheckedempty(false);
+      setIsCalculated(false)
+      if (mortgageAmount == "") {
+        setamountempty(true);
+      }
+      if (mortgageTerm == "") {
+        settermtempty(true);
+      }
+      if (interestRate == "") {
+        setrateempty(true);
+      }
+      if (isChecked == false && isChecked2 == false) {
+        setcheckedempty(true);
+      }
     }
-
-    setmonth(monthlyPayment.toFixed(2));
-    setyear(totalPayment.toFixed(2));
-
-    setIsCalculated(true);
   };
-
-  
 
   // Clear All işlevi
   const clearAll = () => {
@@ -85,10 +113,15 @@ const App = () => {
 
           <div className="amount-container">
             <label className="amount-label">Mortgage Amount</label>
-            <div className="input-container">
+            <div className={`input-container ${
+                amountempty ? "amounthempty" : ""
+              }`}>
               <input
                 type="text"
                 id="mortgage-amount"
+                className={`${
+                  amountempty ? "amounthempty" : ""
+                }`}
                 name="mortgage-amount"
                 value={mortgageAmount}
                 onChange={(e) => setMortgageAmount(e.target.value)}
@@ -99,10 +132,11 @@ const App = () => {
           <div className="term-rate-container">
             <div className="term-rate-container-inner term-rate-container-inner-2">
               <label className="amount-label">Mortgage Term</label>
-              <div className="input-container-term">
+              <div className={`input-container-term ${termtempty ? "termempty" : ""}`}>
                 <input
                   type="text"
                   id="mortgage-term"
+                  className={`${termtempty ? "termempty" : ""}`}
                   value={mortgageTerm}
                   onChange={(e) => setMortgageTerm(e.target.value)}
                 ></input>
@@ -111,10 +145,11 @@ const App = () => {
 
             <div className="term-rate-container-inner">
               <label className="amount-label">Interest Rate</label>
-              <div className="input-container-term input-container-rate input-container-term-rate">
+              <div className={`input-container-term input-container-rate  ${rateempty ? "termempty" : "input-container-term-rate::before "}`}>
                 <input
                   type="text"
                   id="mortgage-term"
+                  className={`${rateempty ? "termempty" : ""}`}
                   value={interestRate}
                   onChange={(e) => setInterestRate(e.target.value)}
                 ></input>
@@ -127,7 +162,7 @@ const App = () => {
               onClick={handleChange}
               className={`font-weight-700 radio-container ${
                 isChecked ? "checked" : ""
-              }`}
+              } ${checkedempty ? "checkedempty" : ""}`}
             >
               <input
                 type="radio"
@@ -143,7 +178,7 @@ const App = () => {
               onClick={handleChange2}
               className={`font-weight-700 radio-container ${
                 isChecked2 ? "checked2" : ""
-              }`}
+              }${checkedempty ? "checkedempty" : ""}`}
             >
               <input
                 type="radio"
