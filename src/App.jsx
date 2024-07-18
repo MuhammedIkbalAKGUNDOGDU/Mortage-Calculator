@@ -5,6 +5,8 @@ import calculateimg from "./assets/icon-calculator.svg";
 import Button from "react-bootstrap/Button";
 
 const App = () => {
+  const [isCalculated, setIsCalculated] = useState(false);
+
   const [isChecked, setIsChecked] = useState(false);
 
   const handleChange = () => {
@@ -21,6 +23,7 @@ const App = () => {
 
   const calculate = () => {
     console.log("selam");
+    setIsCalculated(true);
   };
 
   const [mortgageAmount, setMortgageAmount] = useState("");
@@ -34,6 +37,7 @@ const App = () => {
     setInterestRate("");
     setIsChecked(false);
     setIsChecked2(false);
+    setIsCalculated(false);
   };
 
   return (
@@ -130,16 +134,39 @@ const App = () => {
           </div>
         </div>
         <div className="inner-container-2">
-          <img
-            className="inner-container-2-svg"
-            src={illustrationEmpty}
-            alt=""
-          />
-          <h1>Result Shown Here</h1>
-          <p>
-            Complete the form and click "calculate repayment" to see what your
-            monthly repayments would be
-          </p>
+          {isCalculated ? (
+            <>
+              <div className="inner-container-2-inner">
+                <div className="repayment-info">
+                  <h2>Your Result</h2>
+                  <p>
+                    Your result are shown below on the information you
+                    provided.To adjust the result, edit the form and click
+                    "calculate repayments" again
+                  </p>
+                </div>
+                <div className="repayment-container">
+                  <p className="payment-p">Your Monthly Repayments</p>
+                  <h1>£2,3456.23</h1>
+                  <p className="payment-p">Totally you'll repay over the term</p>
+                  <h2>£32421412</h2>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <img
+                className="inner-container-2-svg"
+                src={illustrationEmpty}
+                alt=""
+              />
+              <h1>Result Shown Here</h1>
+              <p>
+                Complete the form and click "calculate repayment" to see what
+                your monthly repayments would be
+              </p>
+            </>
+          )}
         </div>
       </div>
     </div>
