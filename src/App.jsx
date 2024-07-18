@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import illustrationEmpty from "./assets/illustration-empty.svg";
 import calculateimg from "./assets/icon-calculator.svg";
 
-import Button from "react-bootstrap/Button";
-
 const App = () => {
   const [amountempty, setamountempty] = useState(false);
   const [termtempty, settermtempty] = useState(false);
@@ -50,13 +48,11 @@ const App = () => {
       var totalPayment = 0;
 
       if (isChecked) {
-        // Monthly payment for repayment mortgage
         monthlyPayment =
           (principal * monthlyInterestRate) /
           (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
         totalPayment = monthlyPayment * numberOfPayments;
       } else if (isChecked2) {
-        // Monthly payment for interest only mortgage
         monthlyPayment = principal * monthlyInterestRate;
         totalPayment = monthlyPayment * numberOfPayments + principal;
       }
@@ -74,7 +70,7 @@ const App = () => {
       settermtempty(false);
       setrateempty(false);
       setcheckedempty(false);
-      setIsCalculated(false)
+      setIsCalculated(false);
       if (mortgageAmount == "") {
         setamountempty(true);
       }
@@ -90,13 +86,17 @@ const App = () => {
     }
   };
 
-  // Clear All işlevi
+
   const clearAll = () => {
     setMortgageAmount("");
     setMortgageTerm("");
     setInterestRate("");
     setIsChecked(false);
     setIsChecked2(false);
+    setamountempty(false);
+    settermtempty(false);
+    setrateempty(false);
+    setcheckedempty(false);
     setIsCalculated(false);
   };
 
@@ -113,15 +113,13 @@ const App = () => {
 
           <div className="amount-container">
             <label className="amount-label">Mortgage Amount</label>
-            <div className={`input-container ${
-                amountempty ? "amounthempty" : ""
-              }`}>
+            <div
+              className={`input-container ${amountempty ? "amounthempty" : ""}`}
+            >
               <input
                 type="text"
                 id="mortgage-amount"
-                className={`${
-                  amountempty ? "amounthempty" : ""
-                }`}
+                className={`${amountempty ? "amounthempty" : ""}`}
                 name="mortgage-amount"
                 value={mortgageAmount}
                 onChange={(e) => setMortgageAmount(e.target.value)}
@@ -132,7 +130,11 @@ const App = () => {
           <div className="term-rate-container">
             <div className="term-rate-container-inner term-rate-container-inner-2">
               <label className="amount-label">Mortgage Term</label>
-              <div className={`input-container-term ${termtempty ? "termempty" : ""}`}>
+              <div
+                className={`input-container-term ${
+                  termtempty ? "termempty" : ""
+                }`}
+              >
                 <input
                   type="text"
                   id="mortgage-term"
@@ -145,7 +147,11 @@ const App = () => {
 
             <div className="term-rate-container-inner">
               <label className="amount-label">Interest Rate</label>
-              <div className={` input-container-rate  ${rateempty ? "termempty" : ""}`}>
+              <div
+                className={` input-container-rate  ${
+                  rateempty ? "termempty" : ""
+                }`}
+              >
                 <input
                   type="text"
                   id="mortgage-term"
