@@ -8,10 +8,15 @@ Real-time Calculations: Instant calculation of monthly mortgage payments as user
 Form Reset: A feature to clear all input fields and reset the form for new calculations.
 Responsive Design: The application is fully responsive and works seamlessly on various devices and screen sizes.
 Technologies Used
+
 React: A JavaScript library for building user interfaces, utilized for creating the interactive and dynamic components of the application.
+
 CSS: Used for styling the application to ensure a visually appealing and user-friendly experience.
+
 JavaScript: Provides the logic for real-time mortgage calculations and form interactions.
+
 HTML: The structure of the web pages.
+
 Getting Started
 To get a local copy up and running, follow these simple steps:
 
@@ -20,22 +25,17 @@ Node.js and npm should be installed on your local machine.
 
 Installation
 Clone the repository:
-sh
-Kodu kopyala
+
 git clone https://github.com/MuhammedIkbalAKGUNDOGDU/Mortage-Calculator
 Navigate to the project directory:
-sh
-Kodu kopyala
+
 cd mortgage-calculator
 Install the dependencies:
-sh
-Kodu kopyala
+
 npm install
 Running the Application
 To start the development server, run:
 
-sh
-Kodu kopyala
 npm start
 The application will be available at http://localhost:3000.
 
