@@ -1,8 +1,56 @@
-# React + Vite
+Mortgage Calculator
+Project Overview
+This project is a responsive mortgage payment calculator built using modern web development technologies. The goal of this project is to provide users with an easy-to-use tool to calculate their monthly mortgage payments based on various input parameters such as loan amount, interest rate, and loan term.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Interactive User Interface: A user-friendly interface for entering mortgage details and viewing calculated results.
+Real-time Calculations: Instant calculation of monthly mortgage payments as users input or adjust parameters.
+Form Reset: A feature to clear all input fields and reset the form for new calculations.
+Responsive Design: The application is fully responsive and works seamlessly on various devices and screen sizes.
+Technologies Used
+React: A JavaScript library for building user interfaces, utilized for creating the interactive and dynamic components of the application.
+CSS: Used for styling the application to ensure a visually appealing and user-friendly experience.
+JavaScript: Provides the logic for real-time mortgage calculations and form interactions.
+HTML: The structure of the web pages.
+Getting Started
+To get a local copy up and running, follow these simple steps:
 
-Currently, two official plugins are available:
+Prerequisites
+Node.js and npm should be installed on your local machine.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Installation
+Clone the repository:
+sh
+Kodu kopyala
+git clone https://github.com/MuhammedIkbalAKGUNDOGDU/mortgage-calculator.git
+Navigate to the project directory:
+sh
+Kodu kopyala
+cd mortgage-calculator
+Install the dependencies:
+sh
+Kodu kopyala
+npm install
+Running the Application
+To start the development server, run:
+
+sh
+Kodu kopyala
+npm start
+The application will be available at http://localhost:3000.
+
+Usage
+Enter the loan amount, interest rate, and loan term in the respective fields.
+The monthly payment will be calculated and displayed automatically.
+Use the "Clear" button to reset the form and enter new values.
+Contributing
+Contributions are welcome! Please feel free to submit a pull request or open an issue to suggest improvements or report bugs.
+
+Website : https://main--mortage-calculator-28.netlify.app/
+
+Contact
+For any questions or feedback, please reach out to:
+
+Muhammed İkbal AKGÜNDOĞDU
+Email: muhammedikbalcmp@gmail.com
+GitHub: MuhammedIkbalAKGUNDOGDU
