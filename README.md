@@ -22,7 +22,7 @@ Installation
 Clone the repository:
 sh
 Kodu kopyala
-git clone https://github.com/MuhammedIkbalAKGUNDOGDU/mortgage-calculator.git
+git clone https://github.com/MuhammedIkbalAKGUNDOGDU/Mortage-Calculator
 Navigate to the project directory:
 sh
 Kodu kopyala
