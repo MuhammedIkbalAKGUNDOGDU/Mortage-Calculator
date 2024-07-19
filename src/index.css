@@ -428,7 +428,7 @@ h1 {
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 601px) {
   .container {
     padding: 0%;
   }
@@ -447,7 +447,8 @@ h1 {
   .inner-container-1 {
     width: 100%;
     max-width: 100%;
-    padding-bottom: 5%;
+    padding-bottom: 10%;
+    margin-bottom: 5%;
   }
   .term-rate-container {
     flex-direction: column;
@@ -513,5 +514,76 @@ h1 {
   .amounthempty::after {
     background-color: var(--White);
     color: var(--Slate-700);
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1180px) {
+  .termempty::before {
+    color: var(--Slate-700);
+    background-color: transparent;
+  }
+  .input-container::before {
+    color: var(--Slate-700);
+    background-color: transparent;
+  }
+  .input-container-rate::before {
+    color: var(--Slate-700);
+    background-color: transparent;
+  }
+  .input-container-term::before {
+    color: var(--Slate-700);
+    background-color: transparent;
+  }
+  .input-container:focus-within::before {
+    color: var(--Slate-700);
+
+    background-color: transparent;
+  }
+  .input-container-rate:focus-within::before {
+    background-color: transparent;
+    color: var(--Slate-700);
+  }
+  .input-container-term:focus-within::before {
+    background-color: transparent;
+    color: var(--Slate-700);
+  }
+  .amounthempty::after {
+    background-color: transparent;
+    color: var(--Slate-700);
+  }
+
+  .inner-container {
+    flex-direction: column;
+    width: 80%;
+    margin: 0%;
+    max-width: 100%;
+    max-height: max-content;
+    box-shadow: none;
+    border-radius: 0%;
+  }
+
+  .inner-container-1 {
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 5%;
+    margin-bottom: 3%;
+  }
+
+  .button-container-1 {
+    width: 100%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+  }
+  .button-container {
+    margin-right: 12%;
+  }
+
+  .inner-container-2 {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 0%;
+    height: max-content;
+    max-height: max-content;
+    padding: 10% 0;
   }
 }
